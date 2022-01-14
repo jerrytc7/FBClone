@@ -1,58 +1,57 @@
-import React, { Component }               from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-class NewPost extends Component {
+function NewPost() {
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
+    const navigate = useNavigate()
 
-  state = {
-    title: '',
-    content: ''
-  }
+    const handleChange = e => {
+        let newValue = e.target.value;
+        let key = e.target.name;
+        switch (key) {
+            case "title":
+                setTitle(newValue)
+                break
+            case "content":
+                setContent(newValue)
+                break
+        }
+    }
 
-  handleChange = e => {
-    let newValue = e.target.value;
-    let key = e.target.name;
-    this.setState({
-      [key]: newValue
-    });
-  }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let token = document.querySelector('meta[name="csrf-token"]').content;
+        fetch('api/v1/posts', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-Token': token
+            },
+            redirect: "error",
+            body: JSON.stringify({
+                title, content
+            })
+        })
+            .then(post => {
+                navigate("/")
+            });
+    }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    let data = {post: this.state};
-    let token = document.querySelector('meta[name="csrf-token"]').content;
-    fetch('api/v1/posts', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': token
-      },
-      redirect: "error",
-      body: JSON.stringify(this.state)
-    })
-      .then(resp => {
-        resp.json()
-      })
-      .then(post => {
-        this.props.navigate('/')
-      });
-  }
-
-  render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <p>
-          <label htmlFor="title">Title: </label>
-          <input type="text" name="title" onChange={this.handleChange} />
-        </p>
-        <p>
-          <label htmlFor="content">Content: </label>
-          <textarea name="content" id="" cols="30" rows="10" onChange={this.handleChange}></textarea>
-        </p>
-        <input type="submit" value="Create Post" />
-      </form>
+        <form onSubmit={handleSubmit}>
+            <p>
+                <label htmlFor="title">Title: </label>
+                <input type="text" name="title" onChange={handleChange} />
+            </p>
+            <p>
+                <label htmlFor="content">Content: </label>
+                <textarea name="content" id="" cols="30" rows="10" onChange={handleChange}></textarea>
+            </p>
+            <input type="submit" value="Create Post" />
+        </form>
     )
-  }
 }
 
 export default NewPost

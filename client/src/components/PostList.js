@@ -1,41 +1,34 @@
-import React, { Component }               from 'react'
-import { Link }                           from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import {Link} from "react-router-dom";
 
-class PostList extends Component {
+function PostList() {
+    const [posts, setPosts] = useState([])
 
-  state = {
-    posts: []
-  }
+    useEffect(() => {
+        fetch("api/v1/posts")
+            .then(posts => posts.json())
+            .then(posts => {
+                setPosts(posts)
+            })
+    }, [])
 
-  componentDidMount() {
-    fetch('/api/v1/posts')
-      .then(posts => posts.json())
-      .then(posts => {
-        this.setState({
-          posts: posts
-        })
-      })
-  }
+    return (
+        <div>
+            Post List Component
+            {posts.map(post => <PostListItem {...post} key={post.id}/>)}
+            <Link to="/posts/new">Add a New Post</Link>
+        </div>
+    )
+}
 
-  renderPosts = () => {
-    return this.state.posts.map(post => {
-      return (
-        <div key={post.id}>
-          {post.title} - {post.content}
+function PostListItem({id,title,content}){
+    return (
+        <div>
+        <Link to={"/posts/edit/"+id}>
+          {title} - {content}
+        </Link>
         </div>
       )
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        PostList Component
-        {this.renderPosts()}
-        <Link to="/posts/new">Add a New Post</Link>
-      </div>
-    )
-  }
 }
 
 export default PostList
