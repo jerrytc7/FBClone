@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
+import './postList.css'
 
 function PostList() {
     const [posts, setPosts] = useState([])
@@ -13,8 +14,8 @@ function PostList() {
     }, [])
 
     return (
-        <div>
-            Post List Component
+        <div className='primary'>
+            Posts:
             {posts.map(post => <PostListItem {...post} key={post.id}/>)}
             <Link to="/posts/new">Add a New Post</Link>
         </div>

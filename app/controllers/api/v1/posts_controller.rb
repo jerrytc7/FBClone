@@ -3,7 +3,7 @@ module Api
     class PostsController < ApplicationController
       def index 
         if user_signed_in?
-          render json: current_user.posts
+          render json: current_user.posts, include: :user, status: :ok
         else
           render json: {}, status: 401
         end 
@@ -12,7 +12,7 @@ module Api
       def show
         if user_signed_in?
           post = Post.find_by(id: params[:id])
-          render json: post, status: :ok
+          render json: post, include: :user, status: :ok
         else
           render json: {}, status: 401
         end
