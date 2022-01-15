@@ -10,8 +10,8 @@ import EditPost from './components/EditPost';
 function App() {
   return (
     <HashRouter>
-      <video preload="auto" autoPlay muted loop className='background'>
-        <source src="/assets/shootingstar.mp4" type='video/mp4'/>
+      <video poster="/assets/poster.png" preload="auto" autoPlay muted loop className='background'>
+        <source src="/assets/movingbooks.mp4" type='video/mp4'/>
       </video>
       <div className='app'>
         <div className='navbar'>
