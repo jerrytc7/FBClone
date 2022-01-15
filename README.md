@@ -23,3 +23,7 @@ Things you may want to cover:
 
 * ...
 ./bin/webpack-dev-server
+
+https://www.pexels.com/videos
+
+https://loremipsum.io/generator/?n=2&t=p

@@ -2,3 +2,34 @@
         color: orange;
         margin: 100;
 }
+
+.list{
+        display: flex;
+        flex-direction: column;
+        width: 25vw;
+        margin: auto;
+}
+
+.item{
+        height: 9rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        background-color: lightblue;
+}
+
+.head{
+        font-size: 1.5rem;
+}
+
+.body{
+        font-size: 1rem;
+        overflow-y: auto;
+}
+
+
+.foot{
+        font-size: 1rem;
+}       
+
