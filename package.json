@@ -1,7 +1,7 @@
 {
   "name": "webpack-hope-2",
   "description": "Build scripts for Heroku",
-  "engines": {"node": ">= 14"},
+  "engines": {"node": "14.x"},
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
