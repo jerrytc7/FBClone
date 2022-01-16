@@ -17,6 +17,7 @@ module Api
           render json: {}, status: 401
         end
       end
+      
 
       def create 
         if user_signed_in? 
@@ -29,7 +30,7 @@ module Api
           render json: {}, status: 401
         end
       end
-      
+
 
       def update
         if user_signed_in?
