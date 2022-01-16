@@ -18,6 +18,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  
   "eslintConfig": {
     "extends": [
       "react-app",
