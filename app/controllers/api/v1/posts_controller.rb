@@ -5,7 +5,7 @@ module Api
         if user_signed_in?
           render json: current_user.posts, include: :user, status: :ok
         else
-          render json: {[]}, status: 401
+          render json: {}, status: 401
         end 
       end
 
@@ -14,7 +14,7 @@ module Api
           post = Post.find_by(id: params[:id])
           render json: post, include: :user, status: :ok
         else
-          render json: {[]}, status: 401
+          render json: {}, status: 401
         end
       end
 
@@ -27,7 +27,7 @@ module Api
             render json: post.errors, status: 400
           end
         else 
-          render json: {[]}, status: 401
+          render json: {}, status: 401
         end
       end
 
@@ -38,7 +38,7 @@ module Api
           post.update(post_params)
           render json: post, status: :accepted
         else
-          render json: {[]}, status: 401
+          render json: {}, status: 401
         end
       end
 
@@ -48,7 +48,7 @@ module Api
           post.destroy
           head :no_content, status: :ok
         else
-          render json: {[]}, status: 401
+          render json: {}, status: 401
         end
       end
 
