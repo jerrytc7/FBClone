@@ -9,9 +9,8 @@ function PostList() {
         fetch("api/v1/posts")
             .then(posts => posts.json())
             .then(posts => {
-                console.log("posts", posts);
                 setPosts(posts)
-            }).catch(err=>console.log(err.message));
+            })
     }, [])
 
     return (
