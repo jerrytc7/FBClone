@@ -17,7 +17,7 @@ function PostList() {
         <div className='primary'>
             Posts:
             <div className='list'>
-            {posts.map(post => <PostListItem {...post} key={post.id} />)}
+            {posts.length > 0 && posts.map(post => <PostListItem {...post} key={post.id} />)}
             </div>
             <Link to="/posts/new">Add a New Post</Link>
         </div>
