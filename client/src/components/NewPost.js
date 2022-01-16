@@ -21,7 +21,8 @@ function NewPost() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let token = document.querySelector('meta[name="csrf-token"]').content;
+        let token = document.querySelector('meta[name="csrf-token"]');
+        if (token) { token = token.content }
         fetch('api/v1/posts', {
             method: 'POST',
             headers: {

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/app'
   get 'welcome/home'
   get '/app', to: 'welcome#app', as: 'app'
+  get '/', to: 'welcome#home'
 
   root 'welcome#home'
   namespace :api do 

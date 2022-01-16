@@ -15,7 +15,7 @@ function App() {
       </video>
       <div className='app'>
         <div className='navbar'>
-          <a href="/users/sign_out">Log out</a>
+          {/* <a href="/users/sign_out">Log out</a> */}
         </div>
         <div className="container">
           <Routes>
