@@ -23,8 +23,8 @@
   },
   "scripts": {
     "clean": "rm -rf public",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider npm install --prefix client && npm run build --prefix client",
+    "build": "npm install --prefix client && npm run build --prefix client",
     "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "NODE_OPTIONS=--openssl-legacy-provider npm run clean && npm run build && npm run deploy"
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   }
 }
