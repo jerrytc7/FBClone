@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get '/' => 'welcome#home'
   # get 'home' => 'welcome#home'
   # get 'app' => 'welcome#app'
-
+  root "fallback#index"
   namespace :api do 
     namespace :v1 do 
       resources :posts
