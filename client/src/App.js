@@ -11,7 +11,7 @@ function Guest() {
   return (
     <div>
       <nav style={{textAlign: "right"}}>
-        <a href="/users/sign_in">Login</a> | <a href="/users/new">Sign Up</a>
+        <a href="/users/sign_in">Login</a> | <a href="/users/sign_up">Sign Up</a>
       </nav>
 
       <h1>Welcome to the Home Page</h1>
