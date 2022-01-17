@@ -10,6 +10,7 @@ import EditPost from './components/EditPost';
 function App() {
   return (
     <HashRouter>
+      <h1 id="test">test react</h1>
       <video poster="/assets/poster.png" preload="auto" autoPlay muted loop className='background'>
         <source src="/assets/movingbooks.mp4" type='video/mp4'/>
       </video>
