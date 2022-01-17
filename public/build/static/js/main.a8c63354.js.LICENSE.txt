@@ -4,6 +4,8 @@ object-assign
 @license MIT
 */
 
+/*! js-cookie v3.0.1 | MIT */
+
 /**
  * React Router DOM v6.2.1
  *

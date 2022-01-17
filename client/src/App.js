@@ -4,7 +4,6 @@ import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import PostList from './components/PostList';
 import NewPost from './components/NewPost';
 import EditPost from './components/EditPost';
-import getCookie from './utils';
 import Cookies from 'js-cookie';
 // import video from './assets/shootingstar.mp4'
 
