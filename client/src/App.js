@@ -23,8 +23,8 @@ function Guest() {
 
 
 function App() {
-  const isLoggedIn = false;
-  let user = getCookie("username")
+  let isLoggedIn = false;
+  const user = getCookie("username")
   if (user === "guest" || user === ""){
     isLoggedIn = false;
   }else {
