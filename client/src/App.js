@@ -5,6 +5,7 @@ import PostList from './components/PostList';
 import NewPost from './components/NewPost';
 import EditPost from './components/EditPost';
 import getCookie from './utils';
+import Cookies from 'js-cookie';
 // import video from './assets/shootingstar.mp4'
 
 function Guest() {
@@ -24,7 +25,7 @@ function Guest() {
 
 function App() {
   let isLoggedIn = false;
-  const user = getCookie("username")
+  const user = Cookies.get("username")
   if (user === "guest" || user === ""){
     isLoggedIn = false;
   }else {
@@ -39,7 +40,7 @@ function App() {
         </video>
         <div className='app'>
           <div className='navbar'>
-            <a href="/users/sign_out">Log out</a>
+            <a onClick={handleLogout}>Log out</a>
           </div>
           <div className="container">
             <Routes>
@@ -56,6 +57,12 @@ function App() {
   }
 
   return <Guest />
+}
+
+function handleLogout(e) {
+  e.preventDefault()
+  Cookies.remove("username")
+  window.location.href = "/users/sign_out"
 }
 
 export default App;
