@@ -12,9 +12,8 @@ const isLoggedIn = false;
 function Guest() {
   return (
     <div>
-      <nav style="text-align: right">
-        <a href="/users/sign_in">Login</a>
-        <a href="/users/new">Sign Up</a>
+      <nav style={{textAlign: "right"}}>
+        <a href="/users/sign_in">Login</a> | <a href="/users/new">Sign Up</a>
       </nav>
 
       <h1>Welcome to the Home Page</h1>
