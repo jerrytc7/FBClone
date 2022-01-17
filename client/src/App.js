@@ -7,7 +7,7 @@ import EditPost from './components/EditPost';
 // import video from './assets/shootingstar.mp4'
 
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 function Guest() {
   return (
