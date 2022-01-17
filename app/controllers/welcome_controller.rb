@@ -5,5 +5,6 @@ class WelcomeController < ApplicationController
   end
 
   def app
+    render file: 'public/index.html'
   end
 end
