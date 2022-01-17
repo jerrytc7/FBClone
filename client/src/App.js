@@ -25,7 +25,7 @@ function Guest() {
 function App() {
   let isLoggedIn = false;
   const user = Cookies.get("username")
-  if (user === "guest" || user === ""){
+  if (user === "guest" || user === "" || user === undefined){
     isLoggedIn = false;
   }else {
     isLoggedIn = true;
