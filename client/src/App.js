@@ -4,10 +4,8 @@ import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import PostList from './components/PostList';
 import NewPost from './components/NewPost';
 import EditPost from './components/EditPost';
+import getCookie from './utils';
 // import video from './assets/shootingstar.mp4'
-
-
-const isLoggedIn = true;
 
 function Guest() {
   return (
@@ -23,7 +21,15 @@ function Guest() {
   )
 }
 
+
 function App() {
+  const isLoggedIn = false;
+  let user = getCookie("username")
+  if (user === "guest" || user === ""){
+    isLoggedIn = false;
+  }else {
+    isLoggedIn = true;
+  }
   if (isLoggedIn) {
     return (
       <HashRouter>
