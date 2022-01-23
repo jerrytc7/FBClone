@@ -1,6 +1,6 @@
 .primary {
         color: darkorange;
-        margin: 100;
+        margin-top: 20px;
 }
 
 .list{
@@ -11,13 +11,14 @@
         max-width: 1300px;
         margin: 0 auto;
         width: 100%;
+        margin-top: 10px;
 }
 
 .item{
         height: 9rem;
-        display: flex;
         margin-bottom: 2rem;
-        background-color: lightblue;
+        background-color:#003648;
+        overflow-y: scroll;
 }
 
 .head{
@@ -36,10 +37,20 @@ a:hover{
 .body{
         font-size: 1rem;
         overflow-y: auto;
+        padding-top: 20px;
 }
 
 
 .foot{
         font-size: 1rem;
-}       
+        position: relative;
+        bottom: -40px;
+}     
+
+@media screen and(max-width: 480px) {
+        .list {
+                display: block;
+                width: 80%;
+        }
+}
 

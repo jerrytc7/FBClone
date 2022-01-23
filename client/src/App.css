@@ -11,6 +11,8 @@
 .navbar{
   display: flex;
   justify-content: flex-end;
+  background: #003648;
+  padding: 20px;
 }
 
 nav {
