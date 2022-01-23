@@ -1,10 +1,41 @@
-.container {
+*, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container, header {
   text-align: center;
 }
 
 .navbar{
   display: flex;
   justify-content: flex-end;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #003648;
+}
+
+nav h3 {
+  color: white;
+}
+
+nav a {
+  font-size: 20px;
+  font-style: italic;
+}
+
+header p{
+  font-style: italic;
+}
+
+header p a {
+  font-weight: 900;
 }
 
 .app{

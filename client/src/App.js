@@ -10,12 +10,15 @@ import Cookies from 'js-cookie';
 function Guest() {
   return (
     <div>
-      <nav style={{textAlign: "right"}}>
+      <nav>
+        <h3>PostApp</h3>
         <a href="/users/sign_in">Login</a> | <a href="/users/sign_up">Sign Up</a>
       </nav>
 
+      <header>
       <h1>Welcome to the Home Page</h1>
       <p> Please <a href="/users/sign_in">log in</a> to continue!</p>
+      </header>
     </div>
 
   )
