@@ -12,7 +12,9 @@ function Guest() {
     <div>
       <nav>
         <h3>PostApp</h3>
+        <div>
         <a href="/users/sign_in">Login</a> | <a href="/users/sign_up">Sign Up</a>
+        </div>
       </nav>
 
       <header>

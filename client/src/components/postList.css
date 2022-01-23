@@ -4,17 +4,18 @@
 }
 
 .list{
-        display: flex;
-        flex-direction: column;
-        width: 25vw;
-        margin: auto;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-gap: 20px;
+        justify-content: space-between;
+        max-width: 1300px;
+        margin: 0 auto;
+        width: 100%;
 }
 
 .item{
         height: 9rem;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         margin-bottom: 2rem;
         background-color: lightblue;
 }
