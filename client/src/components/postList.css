@@ -19,6 +19,11 @@
         margin-bottom: 2rem;
         background-color:#003648;
         overflow-y: scroll;
+        transition: transform .2s;
+}
+
+.item:hover {
+        transform: scale(1.5);
 }
 
 .head{
