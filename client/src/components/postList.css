@@ -1,6 +1,9 @@
 .primary {
         color: darkorange;
         margin: 20px 0 10px 0;
+}
+
+.primary p{
         font-size: 30px;
 }
 

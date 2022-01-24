@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import './postList.css'
 
 function EditPost() {
     const [title, setTitle] = useState("")
@@ -69,14 +70,14 @@ function EditPost() {
         <form onSubmit={handleSubmit}>
             <p>
                 <label htmlFor="title">Title: </label>
-                <input type="text" name="title" onChange={handleChange} value={title}/>
+                <input className='title' type="text" name="title" onChange={handleChange} value={title}/>
             </p>
             <p>
                 <label htmlFor="content">Content: </label>
                 <textarea name="content" id="" cols="30" rows="10" onChange={handleChange} value={content}></textarea>
             </p>
-            <button type="submit">Save Post</button>
-            <button type='button' onClick={handleDeletion}>Delete Post</button>
+            <button className='create' type="submit">Save Post</button>
+            <button className='create' type='button' onClick={handleDeletion}>Delete Post</button>
         </form>
     )
 }
