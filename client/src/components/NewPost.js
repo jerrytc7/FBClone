@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './postList.css'
 
 function NewPost() {
     const [title, setTitle] = useState("")
@@ -44,13 +45,13 @@ function NewPost() {
         <form onSubmit={handleSubmit}>
             <p>
                 <label htmlFor="title">Title: </label>
-                <input type="text" name="title" onChange={handleChange} />
+                <input className='title' type="text" name="title" onChange={handleChange} />
             </p>
             <p>
                 <label htmlFor="content">Content: </label>
                 <textarea name="content" id="" cols="30" rows="10" onChange={handleChange}></textarea>
             </p>
-            <input type="submit" value="Create Post" />
+            <input className='create' type="submit" value="Create Post" />
         </form>
     )
 }

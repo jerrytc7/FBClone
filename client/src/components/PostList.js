@@ -17,10 +17,10 @@ function PostList() {
     return (
         <div className='primary'>
             Posts:
+            <Link to="/posts/new">Add a New Post</Link>
             <div className='list'>
             {posts.length > 0 && posts.map(post => <PostListItem {...post} key={post.id} />)}
             </div>
-            <Link to="/posts/new">Add a New Post</Link>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 .primary {
         color: darkorange;
-        margin-top: 20px;
+        margin: 20px 0 10px 0;
+        font-size: 30px;
 }
 
 .list{
@@ -18,8 +19,9 @@
         height: 9rem;
         margin-bottom: 2rem;
         background-color:#003648;
-        overflow-y: scroll;
+        overflow: auto;
         transition: transform .2s;
+        border-radius: 20px;
 }
 
 .item:hover {
@@ -50,9 +52,28 @@ a:hover{
         font-size: 1rem;
         position: relative;
         bottom: -40px;
-}     
+}   
 
-@media screen and(max-width: 480px) {
+form {
+        max-width: 600px;
+        margin: 20px auto;
+}
+
+.create {
+        background: #003648;
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        border: 1px solid black;
+}
+
+.title, textarea {
+        width: 100%;
+}
+
+@media screen and (max-width: 480px) {
         .list {
                 display: block;
                 width: 80%;
