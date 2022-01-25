@@ -18,7 +18,7 @@ module Api
         if post.save
           render json: post, status: :created 
         else 
-          render json: post.errors, status: 500
+          render json: post.errors, status: 422
         end
       end
 

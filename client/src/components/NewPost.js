@@ -58,8 +58,7 @@ function NewPost() {
             navigate("/")
         })
         .catch((e) => {
-            alert('here!!')
-            //console.log(e.data, e.error, e.message, 'error here')
+            console.log(e.response, 'error here')
         })
     }
 
