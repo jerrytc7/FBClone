@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import './postList.css'
 
 function NewPost() {
@@ -20,25 +21,46 @@ function NewPost() {
         }
     }
 
+    // react-final-form
+    // formik
+
+    function handleErrors(response) {
+        console.log(response)
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let token = document.querySelector('meta[name="csrf-token"]');
         if (token) { token = token.content }
-        fetch('api/v1/posts', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-Token': token
-            },
-            redirect: "error",
-            body: JSON.stringify({
-                title, content
-            })
+        // fetch('api/v1/posts', {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         'X-Requested-With': 'XMLHttpRequest',
+        //         'X-CSRF-Token': token
+        //     },
+        //     redirect: "error",
+        //     body: JSON.stringify({
+        //         title, content
+        //     })
+        // })
+        axios.post('/api/v1/posts', { title, content }, { headers: {
+            "Content-Type": "application/json",
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-Token': token
+         }})
+        .then(post => {
+            navigate("/")
         })
-            .then(post => {
-                navigate("/")
-            });
+        .catch((e) => {
+            alert('here!!')
+            //console.log(e.data, e.error, e.message, 'error here')
+        })
     }
 
     return (
