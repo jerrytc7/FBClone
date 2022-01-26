@@ -17,7 +17,7 @@ function PostList() {
     return (
         <div className='primary'>
             <Link to="/posts/new">Add a New Post</Link>
-           <p>Posts:</p>
+           <p>Posts You've Made!</p>
             <div className='list'>
             {posts.length > 0 && posts.map(post => <PostListItem {...post} key={post.id} />)}
             </div>
@@ -25,7 +25,9 @@ function PostList() {
     )
 }
 
-function PostListItem({ id, title, content, user: { email } }) {
+    export const PostListItem = ({ id, title, content, user: { email } }) => {
+
+    
     return (
         // <div>
         //     <Link to={"/posts/edit/" + id}>

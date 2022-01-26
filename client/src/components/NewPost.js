@@ -8,14 +8,22 @@ function NewPost() {
     const [content, setContent] = useState("")
     const navigate = useNavigate()
 
+    const [errors, setErrors] = useState({})
+
     const handleChange = e => {
         let newValue = e.target.value;
         let key = e.target.name;
         switch (key) {
             case "title":
+                setErrors((state) => {
+                    return (state.title) ? { content: state.content } : state
+                })
                 setTitle(newValue)
                 break
             case "content":
+                setErrors((state) => {
+                    return (state.content) ? { title: state.title } : state
+                })
                 setContent(newValue)
                 break
         }
@@ -23,15 +31,6 @@ function NewPost() {
 
     // react-final-form
     // formik
-
-    function handleErrors(response) {
-        console.log(response)
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response;
-    }
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +57,9 @@ function NewPost() {
             navigate("/")
         })
         .catch((e) => {
-            console.log(e.response, 'error here')
+            if (e.response.status === 422) {
+               setErrors(e.response.data)
+            }
         })
     }
 
@@ -67,10 +68,12 @@ function NewPost() {
             <p>
                 <label htmlFor="title">Title: </label>
                 <input className='title' type="text" name="title" onChange={handleChange} />
+                {errors.title?.map((error) => <div>{`Title ${error}`}</div>)}
             </p>
             <p>
                 <label htmlFor="content">Content: </label>
                 <textarea name="content" id="" cols="30" rows="10" onChange={handleChange}></textarea>
+                {errors.content?.map((error) => <div>{`Content ${error}`}</div>)}
             </p>
             <input className='create' type="submit" value="Create Post" />
         </form>

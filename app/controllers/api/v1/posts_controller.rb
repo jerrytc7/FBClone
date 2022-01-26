@@ -4,6 +4,9 @@ module Api
       before_action :check_user_signed_in
 
       def index 
+        if params[:all] == "true"
+          return render json: Post.all, include: :user, status: :ok
+        end
         render json: current_user.posts, include: :user, status: :ok
       end
 
@@ -25,8 +28,11 @@ module Api
 
       def update
         post = Post.find_by(id: params[:id])
-        post.update(post_params)
-        render json: post, status: :accepted
+        if post.update(post_params)
+          render json: post, status: :accepted
+        else
+          render json: post.errors, status: 422
+        end
       end
 
       def destroy

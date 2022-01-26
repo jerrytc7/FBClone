@@ -15,6 +15,20 @@
   padding: 20px;
 }
 
+.navbarlinks{
+  width: 50%;
+}
+
+.navbarlinks a{
+  padding-right: 10px;
+}
+
+.navbarlogout{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+
 nav {
   display: flex;
   align-items: center;
