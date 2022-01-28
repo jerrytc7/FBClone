@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import './postList.css'
+import { getUser } from '../lib/auth'
 
 function EditPost() {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
+    const [data, setData] = useState({})
     const navigate = useNavigate()
     const params = useParams()
+
+    const currentUser = getUser()
 
 
     const [errors, setErrors] = useState({})
@@ -36,7 +40,8 @@ function EditPost() {
         fetch("/api/v1/posts/"+params.id)
             .then(res => res.json())
             .then(data => {
-                console.log(data.title)
+                console.log(data)
+                setData(data)
                 setTitle(data.title)
                 setContent(data.content)
             })
@@ -104,8 +109,8 @@ function EditPost() {
                 <textarea name="content" id="" cols="30" rows="10" onChange={handleChange} value={content}></textarea>
                 {errors.content?.map((error) => <div>{`Content ${error}`}</div>)}
             </p>
-            <button className='create' type="submit">Save Post</button>
-            <button className='create' type='button' onClick={handleDeletion}>Delete Post</button>
+            {currentUser === data.user?.email && <button className='create' type="submit">Save Post</button>}
+            {currentUser === data.user?.email && <button className='create' type='button' onClick={handleDeletion}>Delete Post</button>}
         </form>
     )
 }

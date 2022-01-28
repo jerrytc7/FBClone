@@ -4,8 +4,8 @@ import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import PostList from './components/PostList';
 import NewPost from './components/NewPost';
 import EditPost from './components/EditPost';
-import Cookies from 'js-cookie';
 import AllPostList from './components/AllPostList';
+import { getUser, removeUser } from './lib/auth';
 
 // import video from './assets/shootingstar.mp4'
 
@@ -31,12 +31,14 @@ function Guest() {
 
 function App() {
   let isLoggedIn = false;
-  const user = Cookies.get("username")
+  const user = getUser();
+  
   if (user === "guest" || user === "" || user === undefined) {
     isLoggedIn = false;
   } else {
     isLoggedIn = true;
   }
+
   if (isLoggedIn) {
     return (
       <HashRouter>
@@ -73,7 +75,7 @@ function App() {
 
 function handleLogout(e) {
   e.preventDefault()
-  Cookies.remove("username")
+  removeUser()
   window.location.href = "/users/sign_out"
 }
 

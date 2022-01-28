@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { getUser } from '../lib/auth';
 import './postList.css'
 
 function PostList() {
     const [posts, setPosts] = useState([])
+
+    const currentUser = getUser()
 
     useEffect(() => {
         fetch("api/v1/posts")
@@ -11,23 +14,21 @@ function PostList() {
             .then(posts => {
                 console.log("posts", posts);
                 setPosts(posts)
-            }).catch(err=>console.log)
+            }).catch(err => console.log)
     }, [])
 
     return (
         <div className='primary'>
             <Link to="/posts/new">Add a New Post</Link>
-           <p>Posts You've Made!</p>
+            <p>Posts You've Made!</p>
             <div className='list'>
-            {posts.length > 0 && posts.map(post => <PostListItem {...post} key={post.id} />)}
+                {posts.length > 0 && posts.map(post => <PostListItem {...post} key={post.id} currentUser={currentUser} />)}
             </div>
         </div>
     )
 }
 
-    export const PostListItem = ({ id, title, content, user: { email } }) => {
-
-    
+export const PostListItem = ({ id, title, content, user: { email }, currentUser }) => {
     return (
         // <div>
         //     <Link to={"/posts/edit/" + id}>
@@ -41,7 +42,7 @@ function PostList() {
         // </div>
         <div className='item'>
             <div className='head'>
-                <Link to={"/posts/edit/" + id}>{title}</Link>
+                {currentUser === email ? <Link to={"/posts/edit/" + id}>{title}</Link> : title}
             </div>
             <div className='body'>
                 {content}

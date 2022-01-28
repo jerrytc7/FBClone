@@ -28,6 +28,8 @@ module Api
 
       def update
         post = Post.find_by(id: params[:id])
+        raise 'Not authorized' if post.user_id != current_user.id
+
         if post.update(post_params)
           render json: post, status: :accepted
         else
